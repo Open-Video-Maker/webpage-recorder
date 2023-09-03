@@ -1,15 +1,15 @@
 {
   "name": "webpage-recorder",
-  "version": "1.0.50",
+  "version": "0.1.0",
+  "module": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "elysia": "latest"
   },
   "devDependencies": {
     "bun-types": "latest"
-  },
-  "module": "src/index.js"
+  }
 }
