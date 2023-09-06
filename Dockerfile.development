@@ -1,0 +1,13 @@
+FROM oven/bun:latest
+
+WORKDIR /app
+
+RUN apt update && \
+    apt install -y curl udev chromium ffmpeg xvfb locales fonts-wqy-zenhei
+RUN localedef -c -f UTF-8 -i zh_CN zh_CN.utf8 && \
+    locale-gen && \
+    fc-cache -fv
+
+ENV LANG zh_CN.UTF-8
+ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
+ENV PUPPETEER_EXECUTABLE_PATH /usr/bin/chromium

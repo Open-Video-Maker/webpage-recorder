@@ -1,0 +1,18 @@
+services:
+  webpage-recorder:
+    build:
+      context: .
+      dockerfile: ./Dockerfile.development
+    image: webpage-recorder
+    container_name: webpage-recorder
+    restart: always
+    tty: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        bun run dev
+    ports:
+      - 3300:3300
+    volumes:
+      - .:/app
