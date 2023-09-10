@@ -4,10 +4,22 @@ import fs from "node:fs";
 import retry from "p-retry";
 
 interface XvfbOptions {
+  /** determines which X server instance a client application should connect to */
   display: number;
+  /** the identifier assigned to a physical or virtual screen (display) connected to an X server */
   screen: number;
+  /** screen resolution: width */
   width: number;
+  /** screen resolution: height */
   height: number;
+  /** Setting about how many bits are used to represent each pixel's color information
+   * @commonValue:
+   * 1 bit: Monochrome (black and white).
+   * 8 bits: 256 colors (commonly used for older systems).
+   * 16 bits: Thousands of colors (commonly used for older systems).
+   * 24 bits: Millions of colors (commonly used for modern displays).
+   * 32 bits: Millions of colors with an alpha (transparency) channel.
+   */
   depth: number;
 }
 
@@ -70,8 +82,8 @@ export class Xvfb {
       [
         "Xvfb",
         `:${display}`,
-        "-ac",
-        "-nocursor",
+        "-ac", // X server permit access control by the server
+        "-nocursor", // disable the cursor
         "-screen",
         String(screen),
         `${width}x${height}x${depth}`,

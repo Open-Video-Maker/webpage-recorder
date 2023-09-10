@@ -17,7 +17,7 @@ export const record = (app: Elysia) =>
       const framerate = query.f ?? 60;
 
       const display = await Xvfb.getAvailableDisplayNumber();
-      const xvfb = await new Xvfb({ width, height }).start();
+      const xvfb = await new Xvfb({ width, height, display }).start();
 
       const ffmpeg = new FFmpeg({ xvfb, framerate });
       const { id, filename } = ffmpeg;
